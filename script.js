@@ -2,8 +2,7 @@ const btn = document.querySelector("button");
       const area = document.querySelector("ul");
 
       btn.addEventListener("click", () => {
-        const inp = document.querySelector("input");
-        let text = inp.value;
+        let text = document.querySelector("input").value;
         if (text) {
           const el = document.createElement("li");
           const p = document.createElement("p");
@@ -20,7 +19,7 @@ const btn = document.querySelector("button");
           el.appendChild(p);
 
           area.prepend(el);
-          inp.value = "";
+          text = "";
         }
       });
 
