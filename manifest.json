@@ -1,0 +1,12 @@
+{
+  "short_name": "toDo",
+  "name": "To do list",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+    
+  ],
+}

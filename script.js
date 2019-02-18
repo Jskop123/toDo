@@ -2,7 +2,8 @@ const btn = document.querySelector("button");
       const area = document.querySelector("ul");
 
       btn.addEventListener("click", () => {
-        let text = document.querySelector("input").value;
+        const inp = document.querySelector("input");
+        let text = inp.value;
         if (text) {
           const el = document.createElement("li");
           const p = document.createElement("p");
@@ -19,7 +20,7 @@ const btn = document.querySelector("button");
           el.appendChild(p);
 
           area.prepend(el);
-          text = "";
+          inp.value = "";
         }
       });
 
@@ -32,7 +33,7 @@ const btn = document.querySelector("button");
       area.addEventListener("click", e => {
           if(e.target.className.includes('check')){
             const element = e.target;
-            element.className = "far fa-square"
+            element.className = "far fa-square";
             element.parentElement.lastChild.className = ''
           } 
           else if(e.target.className.includes('square')){
