@@ -1,10 +1,11 @@
-const btn = document.querySelector("button");
+const btn = document.querySelector("#add");
+const deleteAll = document.querySelector('#delete')
 const area = document.querySelector("ul");
 
 btn.addEventListener("click", () => {
   const inp = document.querySelector("input");
   let text = inp.value;
-  if (text) {
+  if (text && text !== ' ') {
     const el = document.createElement("li");
     const p = document.createElement("p");
     const cnt = document.createTextNode(text);
@@ -30,14 +31,31 @@ area.addEventListener("click", e => {
     element.parentElement.removeChild(element);
   }
 });
+
+const toggleClasses = (e, elmClass, childClass) => {
+  const element = e.target;
+  element.className = elmClass;
+  element.parentElement.lastChild.className = childClass;
+}
+
 area.addEventListener("click", e => {
   if (e.target.className.includes("check")) {
-    const element = e.target;
-    element.className = "far fa-square";
-    element.parentElement.lastChild.className = "";
-  } else if (e.target.className.includes("square")) {
-    const element = e.target;
-    element.className = "far fa-check-square";
-    element.parentElement.lastChild.className = "done";
+    toggleClasses(e, "far fa-square", "")
+  } 
+  else if (e.target.className.includes("square")) {
+    toggleClasses(e, "far fa-check-square", "done")
   }
+  deleteAll.addEventListener('click', () => {
+    area.childNodes.forEach((el) => {
+      if(el.childNodes[0].className.includes("check")){
+        el.parentElement.removeChild(el)
+      }
+    })
+  })
 });
+
+
+
+
+
+
